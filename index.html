@@ -160,7 +160,7 @@ table.dt{width:100%;border-collapse:collapse;}table.dt th{text-align:left;paddin
     </div>
     <div class="grid2" style="margin-bottom:12px">
       <div class="ccard"><div class="ctitle">Receita × Margem × Investimento</div><div class="csub">Evolução mensal em reais</div><canvas id="ov_site_rec_mc" height="100"></canvas></div>
-      <div class="ccard"><div class="ctitle">ROAS e ROI — Site</div><div class="csub">Eficiência do investimento</div><canvas id="ov_site_roas" height="200"></canvas></div>
+      <div class="ccard"><div class="ctitle">ROAS — Site</div><div class="csub">Receita ÷ investimento em mídia</div><canvas id="ov_site_roas" height="200"></canvas></div>
     </div>
     <div class="grid4">
       <div class="ccard"><div class="ctitle">Ticket Médio</div><div class="csub">Queda contínua no período</div><canvas id="ov_site_tick" height="130"></canvas></div>
@@ -1995,9 +1995,8 @@ function buildOv() {
     type: 'line',
     data: { labels: L, datasets: [
       {label:'ROAS',data:OV.site_roas,borderColor:'#141414',backgroundColor:'rgba(157,217,255,.12)',fill:true,tension:.4,borderWidth:2.5,pointRadius:5,pointBackgroundColor:'#141414'},
-      {label:'ROI%',data:OV.site_roi.map(v=>v/100),borderColor:'#04a358',borderWidth:2,borderDash:[4,3],tension:.4,pointRadius:4,yAxisID:'y2'},
     ]},
-    options: { responsive:true, plugins:{legend:{labels:{font:fo2}}}, scales:{y:{ticks:{callback:v=>v.toFixed(1)+'x',font:fo2}},y2:{position:'right',ticks:{callback:v=>(v*100).toFixed(0)+'%',font:fo2},grid:{drawOnChartArea:false}}} }
+    options: { responsive:true, plugins:{legend:{display:false}}, scales:{y:{ticks:{callback:v=>v.toFixed(1)+'x',font:fo2}}} }
   });
   new Chart(document.getElementById('ov_site_tick'), {
     type: 'line',
